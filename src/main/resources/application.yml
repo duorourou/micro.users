@@ -1,0 +1,20 @@
+server:
+  port: 9001
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.56.101:3309/micro_users?verifyServerCertificate=false&useSSL=true
+    username: xiaoc
+    password: xroot
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  application:
+    name: duorr_users
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.56.101:5607/eureka/
+  instance:
+    prefer-ip-address: true
