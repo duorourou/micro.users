@@ -1,6 +1,5 @@
 .gradle
 build/
-!build/libs
 !gradle/wrapper/gradle-wrapper.jar
 
 ### IntelliJ IDEA ###
