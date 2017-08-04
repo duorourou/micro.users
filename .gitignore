@@ -1,6 +1,6 @@
 .gradle
+!build/libs
 build/
-!build/libs/*.jar
 !gradle/wrapper/gradle-wrapper.jar
 
 ### IntelliJ IDEA ###
