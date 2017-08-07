@@ -57,5 +57,5 @@ task buildDocker(type: Docker, dependsOn: build) {
 }
 
 jar {
-	baseName = "users"
+	baseName = "micro_users"
 }
