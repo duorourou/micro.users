@@ -26,6 +26,9 @@ public class UserController {
 
     @RequestMapping(path = "/{userId}", method = RequestMethod.GET)
     public User getUser(@PathVariable(name = "userId") String userId) {
+        if("abc".equals(userId)) {
+            throw new RuntimeException("unknown user id 'abc'.");
+        }
         return userService.getUser(userId);
     }
 }

@@ -20,6 +20,7 @@ sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+	jcenter()
 }
 
 
@@ -29,10 +30,13 @@ ext {
 
 dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-eureka')
-	compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+//	compile('mysql:mysql-connector-java:6.0.6')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.projectlombok:lombok:1.16.18')
+	compile('io.vertx:vertx-core:3.4.2')
+	compile('io.vertx:vertx-platform:2.1.6')
+	compile('com.github.aesteve:nubes:1.3')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
@@ -44,6 +48,10 @@ dependencyManagement {
 }
 
 group = 'duorr'
+
+jar {
+	baseName = "micro_users"
+}
 
 task buildDocker(type: Docker, dependsOn: build) {
 	applicationName = jar.baseName
@@ -57,6 +65,7 @@ task buildDocker(type: Docker, dependsOn: build) {
 	}
 }
 
-jar {
-	baseName = "micro_users"
-}
+//configurations {
+//	compile.exclude module: 'spring-boot-starter-tomcat'
+//	compile.exclude group: 'org.apache.tomcat'
+//}

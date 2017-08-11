@@ -11,11 +11,11 @@ spring:
     hibernate:
       ddl-auto: update
   application:
-    name: duorr_users
+    name: users
 eureka:
   client:
     service-url:
       defaultZone: http://192.168.56.101:5607/eureka/
   instance:
-    prefer-ip-address: true
-    ip-address: 192.168.56.101
+     leaseRenewalIntervalInSeconds: 1
+     leaseExpirationDurationInSeconds: 2
