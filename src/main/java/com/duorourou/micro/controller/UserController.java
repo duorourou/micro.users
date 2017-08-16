@@ -2,6 +2,8 @@ package com.duorourou.micro.controller;
 
 import com.duorourou.micro.domain.User;
 import com.duorourou.micro.service.UserService;
+import com.google.gson.Gson;
+import io.vertx.ext.web.RoutingContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,5 +32,14 @@ public class UserController {
             throw new RuntimeException("unknown user id 'abc'.");
         }
         return userService.getUser(userId);
+    }
+
+    @ResponseBody
+    public void getUser(RoutingContext routingContext) {
+        String userId = routingContext.request().getParam("id");
+        if("abc".equals(userId)) {
+            throw new RuntimeException("unknown user id 'abc'.");
+        }
+        routingContext.response().setStatusCode(200).end(new Gson().toJson(userService.getUser(userId)));
     }
 }

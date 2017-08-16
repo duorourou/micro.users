@@ -1,7 +1,8 @@
 package com.duorourou.micro;
 
-import com.duorourou.micro.vertx.StaticService;
+import com.duorourou.micro.vertx.VertxServer;
 import io.vertx.core.Vertx;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,17 +14,18 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableAutoConfiguration
+@Slf4j
 public class UsersApplication {
 
-	@Autowired
-	private StaticService staticService;
+    @Autowired
+    private VertxServer vertxServer;
 
-	public static void main(String[] args) {
-		SpringApplication.run(UsersApplication.class, args);
-	}
+    @PostConstruct
+    public void deployVerticle() {
+        Vertx.vertx().deployVerticle(vertxServer);
+    }
 
-	@PostConstruct
-	public void deployVerticle() {
-		Vertx.vertx().deployVerticle(staticService);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(UsersApplication.class, args);
+    }
 }
