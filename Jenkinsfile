@@ -1,13 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('error') {
+    stage('print') {
       steps {
-        echo 'hello world'
+        echo 'hell world!'
       }
     }
-  }
-  environment {
-    Aprofile = 'AUAT'
+    stage('') {
+      steps {
+        git(url: 'git@github.com:duorourou/micro.users.git', branch: 'master', changelog: true, credentialsId: 'duorourou')
+      }
+    }
   }
 }
